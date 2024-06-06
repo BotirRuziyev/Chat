@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="./assets/libs/bootstrap.min.css">
+    <!-- css -->
+    <link rel="stylesheet" href="./assets/css/chat.css">
+    <!-- fonts -->
+    <link rel="stylesheet" href="./assets/fonts/Inter/stylesheet.css">
+    <title>Chat</title>
+</head>
+
+<body>
+    <!-- header start -->
+    <header class="header">
+        <div class="header_top">
+            <div class="main_container d-flex align-items-center justify-content-between">
+                <div class="logo">
+                    Your Logo
+                </div>
+                <div class="accaunt_login">
+                    <a href="#" class="d-flex align-items-center">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_28_4043)">
+                                <path
+                                    d="M10 0C4.48583 0 0 4.48583 0 10C0 15.5142 4.48583 20 10 20C15.5142 20 20 15.5142 20 10C20 4.48583 15.5142 0 10 0ZM6.66667 17.6367V15.8333C6.66667 15.3733 7.04083 15 7.5 15H12.5C12.9592 15 13.3333 15.3733 13.3333 15.8333V17.6367C12.3117 18.0842 11.185 18.3333 10 18.3333C8.815 18.3333 7.68833 18.0842 6.66667 17.6367ZM15 16.6625V15.8333C15 14.455 13.8783 13.3333 12.5 13.3333H7.5C6.12167 13.3333 5 14.455 5 15.8333V16.6625C2.9775 15.1408 1.66667 12.7208 1.66667 10C1.66667 5.405 5.405 1.66667 10 1.66667C14.595 1.66667 18.3333 5.405 18.3333 10C18.3333 12.72 17.0225 15.1408 15 16.6625ZM10 5C8.16167 5 6.66667 6.495 6.66667 8.33333C6.66667 10.1717 8.16167 11.6667 10 11.6667C11.8383 11.6667 13.3333 10.1717 13.3333 8.33333C13.3333 6.495 11.8383 5 10 5ZM10 10C9.08083 10 8.33333 9.2525 8.33333 8.33333C8.33333 7.41417 9.08083 6.66667 10 6.66667C10.9192 6.66667 11.6667 7.41417 11.6667 8.33333C11.6667 9.2525 10.9192 10 10 10Z"
+                                    fill="white" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_28_4043">
+                                    <rect width="20" height="20" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                        Log In
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="header_bottom position-relative">
+            <div class="main_container d-flex align-items-center justify-content-between">
+                <div class="header_bottom_burger_select d-flex align-items-center">
+                    <button class="burger_menu_btn">
+                        <img src="./assets/images/menu-burger.svg" alt="menu-burger-btn">
+                    </button>
+                    <div class="header_bottom_select position-relative">
+                        <button class="header_bottom_select_btn d-flex align-items-center">
+                            <span class="select_val">Hollywood air</span>
+                            <div class="select_icon">
+                                <img src="./assets/images/icons/select_icon.svg" alt="">
+                            </div>
+                        </button>
+                        <ul class="header_bottom_select_menu position-absolute">
+                            <li>Hollywood air 2</li>
+                            <li>Hollywood air 3</li>
+                            <li>Hollywood air 4</li>
+                        </ul>
+                    </div>
+                </div>
+                <button class="account_settings_btn modal_btn" data-filter="settings-modal">
+                    <img src="./assets/images/icons/settings.svg" alt="settings">
+                </button>
+            </div>
+        </div>
+    </header>
+    <!-- header end -->
+    <!-- burger menu start -->
+    <div class="menu_container bubble position-absolute">
+        <div class="close_menu">
+            <button class="close_menu_btn">
+                <img src="./assets/images/icons/menu-burger-close.svg" alt="">
+            </button>
+        </div>
+        <div class="menu_lists_container">
+            <ul class="menu_lists m-0 p-0">
+                <li class="menu_item">
+                    <a href="#" class="d-flex align-items-center">
+                        <img src="./assets/images/icons/add.svg" alt="">
+                        Добавить чат
+                    </a>
+                </li>
+                <li class="menu_item">
+                    <a href="#" class="d-flex align-items-center">
+                        <img src="./assets/images/icons/circle-user.svg" alt="">
+                        Редактировать профиль
+                    </a>
+                </li>
+                <li class="menu_item">
+                    <a href="#" class="d-flex align-items-center modal_btn" data-filter="admin-panel-modal">
+                        <img src="./assets/images/icons/settings.svg" alt="">
+                        Настройки
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- burger menu end -->
+
+    <main id="main">
+        <div class="main_in main_container d-flex">
+            <!-- chatfolders start -->
+            <div class="chatfolders position-relative">
+                <div class="chatfolders_search">
+                    <label for="chatfolderssearch" class="d-flex align-items-center">
+                        <button class="search_btn">
+                            <img src="./assets/images/icons/search.svg" alt="search">
+                        </button>
+                        <input type="text" id="chatfolderssearch" class="w-100" placeholder="Поиск">
+                    </label>
+                </div>
+                <div class="chat_list">
+                    <div class="list_item active" id="users">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/face_message.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Сергей Терехов
+                                    </div>
+                                    <div class="last_message_date">
+                                        5:12
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Get started
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar2.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        5:12
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        /start_admin-h5nnjgbc3
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar3.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Мария Сестра
+                                    </div>
+                                    <div class="last_message_date">
+                                        5:12
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Male
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar4.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/message.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Александр
+                                    </div>
+                                    <div class="last_message_date">
+                                        5:12
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        <span>В последнее время друз Lorem. Lorem.</span>
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar5.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Чт
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Сергей ремонт 89804578899
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar6.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        23.03.24
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        В последнее время друз...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar7.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        5:12
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        оки
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="list_item">
+                        <a href="#" class="list_item_btn d-flex align-items-center">
+                            <div class="avatar position-relative">
+                                <img class="avatar_img" src="./assets/images/avatar8.png" alt="">
+                                <div class="message_icon position-absolute">
+                                    <img src="./assets/images/icons/telegram.svg" alt="">
+                                </div>
+                            </div>
+                            <div class="info w-100">
+                                <div class="info_top d-flex align-items-center justify-content-between">
+                                    <div class="title">
+                                        Екатерина Славная
+                                    </div>
+                                    <div class="last_message_date">
+                                        Ср
+                                    </div>
+                                </div>
+                                <div class="info_bottom d-flex align-items-center justify-content-between">
+                                    <div class="subtitle">
+                                        Завтра отправим артдиректо...
+                                    </div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="add_contact position-absolute">
+                    <button class="add_contact_btn d-flex align-items-center justify-content-center">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 1V19" stroke="white" stroke-width="2" stroke-linecap="round" />
+                            <path d="M1 10L19 10" stroke="white" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- chatfolders end -->
+
+            <!-- messages layout start -->
+            <div class="messages_layout">
+                <!-- messages layout header start -->
+                <div class="messages_layout_header d-flex align-items-center justify-content-between">
+                    <div class="messages_layout_header_left_block d-flex align-items-center">
+                        <button class="users_modal_btn bg-transparent border-0 d-md-none d-block">
+                            <a href="#users">
+                                <img height="23" src="./assets/images/icons/burger.png" alt="burger">
+                            </a>
+                        </button>
+                        <div class="chat_info_wrapper">
+                            <div class="title">Сергей Терехов</div>
+                            <div class="user_status">
+                                Был(а) 4 мин назад
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="header_tools d-flex align-items-center">
+                        <div class="transfer_conversation d-flex align-items-center position-relative">
+                            <button class="transfer_conversation_btn">
+                                <img src="./assets/images/icons/robot.svg" alt="robot">
+                            </button>
+                            <div class="text position-absolute d-md-block d-none">
+                                Transfer Conversation to bot
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" checked>
+                            </div>
+                        </div>
+                        <div class="actions position-relative">
+                            <button class="actions_btn">
+                                <img src="./assets/images/icons/union.svg" alt="union">
+                            </button>
+                            <div class="text position-absolute d-md-block d-none">
+                                Transfer Conversation to bot
+                            </div>
+                            <div class="actions_menu position-absolute">
+                                <div class="menu_item">
+                                    <button class="d-flex align-items-center">
+                                        <img src="./assets/images/icons/star.svg" alt="star">
+                                        <span>
+                                            Mark as follow up
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="menu_item">
+                                    <button class="d-flex align-items-center">
+                                        <img src="./assets/images/icons/envelope.svg" alt="star">
+                                        <span>
+                                            Mark as unread
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="menu_item">
+                                    <button class="d-flex align-items-center">
+                                        <img src="./assets/images/icons/archive.svg" alt="star">
+                                        <span>
+                                            Archive
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="menu_item">
+                                    <button class="d-flex align-items-center">
+                                        <img src="./assets/images/icons/lock.svg" alt="star">
+                                        <span>
+                                            Block Contact
+                                        </span>
+                                    </button>
+                                </div>
+                                <div class="menu_item">
+                                    <button class="d-flex align-items-center">
+                                        <img src="./assets/images/icons/trash.svg" alt="star">
+                                        <span>
+                                            Delete Contact
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#userdata" class="back_btn management_back_btn bg-transparent border-0 text-start">
+                            <img height="20" src="./assets/images/icons/left-arrow.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <!-- messages layout header end -->
+
+                <!-- message list start -->
+                <div class="message_list">
+                    <div class="messages_container">
+                        <div class="message_list_item d-flex">
+                            <div class="message_content_wrapper">
+                                <div class="message_content">
+                                    Hellow
+                                    <br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut
+                                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit,
+                                    sed
+                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </div>
+                                <div class="message_meta d-flex align-items-center justify-content-end">
+                                    <div class="message_time">12:45</div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="messagestatus">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sticky_date_container d-flex align-items-center justify-content-center">
+                            <div class="sticky_date">
+                                Сегодня
+                            </div>
+                        </div>
+                        <div class="message_list_item own media_content d-flex">
+                            <div class="message_content_wrapper media_content_wrapper">
+                                <div class="media_content_in d-grid">
+                                    <img src="./assets/images/Image.png" alt="">
+                                    <img src="./assets/images/Image2.png" alt="">
+                                </div>
+                                <div
+                                    class="message_meta d-flex align-items-center justify-content-end position-relative">
+                                    <div class="message_time">12:45</div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="messagestatus">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message_list_item d-flex">
+                            <div class="message_content_wrapper">
+                                <div class="message_content">
+                                    Hellow
+                                    <br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut
+                                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit,
+                                    sed
+                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </div>
+                                <div class="message_meta d-flex align-items-center justify-content-end">
+                                    <div class="message_time">12:45</div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="messagestatus">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message_list_item own d-flex">
+                            <div class="message_content_wrapper">
+                                <div class="message_content">
+                                    Hellow
+                                    <br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut
+                                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit,
+                                    sed
+                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </div>
+                                <div class="message_meta d-flex align-items-center justify-content-end">
+                                    <div class="message_time">12:45</div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="messagestatus">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message_list_item d-flex">
+                            <div class="message_content_wrapper">
+                                <div class="message_content">
+                                    Hellow
+                                    <br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut
+                                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit,
+                                    sed
+                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </div>
+                                <div class="message_meta d-flex align-items-center justify-content-end">
+                                    <div class="message_time">12:45</div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="messagestatus">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="message_list_item own d-flex">
+                            <div class="message_content_wrapper">
+                                <div class="message_content">
+                                    Hellow
+                                    <br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut
+                                    labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing
+                                    elit,
+                                    sed
+                                    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                </div>
+                                <div class="message_meta d-flex align-items-center justify-content-end">
+                                    <div class="message_time">12:45</div>
+                                    <div class="message_outgoing_status">
+                                        <img src="./assets/images/icons/messagestatus.svg" alt="messagestatus">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- message list end -->
+
+                <!-- messages composer start -->
+                <div class="messages_composer">
+                    <form action="#" onsubmit="return false" class="d-flex align-items-center justify-content-between">
+                        <div class="message_input_wrapper d-flex align-items-center">
+                            <button class="call_file_btn">
+                                <img src="./assets/images/icons/file.svg" alt="file">
+                                <input type="file" id="calledfile" class="d-none" multiple accept="image/*"
+                                    data-filter="send-file">
+                            </button>
+                            <div class="message_input_text">
+                                <input type="text" id="messageinputtext" placeholder="Написать сообщение"
+                                    autocomplete="off">
+                            </div>
+                        </div>
+                        <button class="message_send_btn">
+                            <img src="./assets/images/icons/send.svg" alt="send">
+                        </button>
+                    </form>
+                </div>
+                <!-- messages composer end -->
+            </div>
+            <!-- messages layout end -->
+
+            <!-- management start -->
+            <div class="management_wrapper d-flex flex-column justify-content-between position-relative">
+                <button class="back_btn management_back_btn bg-transparent border-0 text-start mb-2"
+                    style="padding-left: 16px;">
+                    <img height="20" src="./assets/images/icons/left-arrow.png" alt="">
+                </button>
+                <div class="user_data">
+                    <div class="user_data_head d-flex flex-column align-items-center">
+                        <div class="avatar">
+                            <img src="./assets/images/avatar.png" alt="avatar">
+                        </div>
+                        <div class="user_name">Сергей Терехов</div>
+                    </div>
+                </div>
+                <div class="management_wrapper_scroll d-flex flex-column justify-content-between">
+                    <div class="user_data_menu" id="userdata">
+                        <div class="user_data_item d-flex align-items-center justify-content-between position-relative">
+                            <div class="user_data_info_symbol d-flex align-items-center">
+                                <img src="./assets/images/icons/envelope.svg" alt="envelope">
+                                Email
+                            </div>
+                            <div class="user_data_info d-flex align-items-center justify-content-between w-100">
+                                <div class="user_data_info_val">terechov1988@gmail.com</div>
+                                <button class="email_edit_btn edit_btn modal_btn" data-filter="email-modal"><img
+                                        src="./assets/images/icons/pen-clip.svg" alt="pen-clip"></button>
+                            </div>
+                        </div>
+                        <div class="user_data_item d-flex align-items-center justify-content-between">
+                            <div class="user_data_info_symbol d-flex align-items-center">
+                                <img src="./assets/images/icons/phone-call.svg" alt="phone-call">
+                                Phone
+                            </div>
+                            <div class="user_data_info d-flex align-items-center justify-content-between  w-100">
+                                <div class="user_data_info_val">+79082223344</div>
+                                <!-- <button class="email_edit_btn edit_btn"><img src="./assets/images/icons/pen-clip.svg"
+                                        alt="pen-clip"></button> -->
+                            </div>
+                        </div>
+                        <div class="user_data_item d-flex align-items-center justify-content-between">
+                            <div class="user_data_info_symbol d-flex align-items-center">
+                                <img src="./assets/images/icons/clock-three.svg" alt="clock-three">
+                                Local time
+                            </div>
+                            <div class="user_data_info d-flex align-items-center justify-content-between  w-100">
+                                <div class="user_data_info_val">08:10</div>
+                            </div>
+                        </div>
+                        <div class="user_data_item d-flex align-items-center justify-content-between">
+                            <div class="user_data_info_symbol d-flex align-items-center">
+                                <img src="./assets/images/icons/circle-user.svg" alt="circle-user">
+                                Contact
+                            </div>
+                            <div class="user_data_info d-flex align-items-center justify-content-between  w-100">
+                                <div class="user_data_info_val">04/04/2024 9:57 AM</div>
+                            </div>
+                        </div>
+                        <div class="user_data_item d-flex align-items-center justify-content-between">
+                            <div class="user_data_info_symbol d-flex align-items-center">
+                                <img src="./assets/images/icons/venus-mars.svg" alt="venus-mars">
+                                Gender
+                            </div>
+                            <div class="user_data_info d-flex align-items-center justify-content-between  w-100">
+                                <div class="user_data_info_val">Male</div>
+                            </div>
+                        </div>
+                        <div class="user_data_item d-flex align-items-center justify-content-between">
+                            <div class="user_data_info_symbol d-flex align-items-center">
+                                <img src="./assets/images/icons/marker.svg" alt="marker">
+                                Adress
+                            </div>
+                            <div
+                                class="user_data_info position-relative d-flex align-items-center justify-content-between  w-100">
+                                <div class="user_data_info_more position-absolute">
+                                    г. Москва, Россия, г.Гусь-Хрустальный,
+                                    пр-т Мира, д.158, стр.2
+                                </div>
+                                <div class="user_data_info_val">г. Москва, Россия, г. Гусь odd</div>
+                            </div>
+                        </div>
+                        <button class="info_add_btn d-flex align-items-center">
+                            <img src="./assets/images/icons/add.svg" alt="add">
+                            <span>Add new</span>
+                        </button>
+                    </div>
+                    <div class="notes_wrapper w-100">
+                        <div class="title" id="notes">Заметки</div>
+                        <div class="notes_list">
+                            <div class="list_item d-flex align-items-start">
+                                <span class="list_item_val">
+                                    Hellow <br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut
+                                    labore et dolore magna aliqua.
+                                </span>
+                                <div class="actions position-relative">
+                                    <button class="actions_btn">
+                                        <img src="./assets/images/icons/union.svg" alt="union">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="list_item d-flex align-items-start">
+                                <span class="list_item_val">
+                                    Hellow Lorem ipsum dolor sit amet, consectetur adipiscing eli
+                                </span>
+                                <div class="actions position-relative">
+                                    <button class="actions_btn">
+                                        <img src="./assets/images/icons/union.svg" alt="union">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="list_item d-flex align-items-start">
+                                <span class="list_item_val">
+                                    Hellow Lorem ipsum dolor sit amet, consectetur adipiscing eli
+                                </span>
+                                <div class="actions position-relative">
+                                    <button class="actions_btn">
+                                        <img src="./assets/images/icons/union.svg" alt="union">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="list_item d-flex align-items-start">
+                                <span class="list_item_val">
+                                    Hellow Lorem ipsum dolor sit amet, consectetur adipiscing eli
+                                </span>
+                                <div class="actions position-relative">
+                                    <button class="actions_btn">
+                                        <img src="./assets/images/icons/union.svg" alt="union">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#notes" class="note_add_btn w-100 d-flex align-items-center justify-content-between">
+                            <span>Добавить заметку</span>
+                            <img src="./assets/images/icons/add.svg" alt="add">
+                        </a>
+                        <div class="note_form d-none">
+                            <form action="#" onsubmit="return false">
+                                <div class="form_control">
+                                    <textarea class="form-control" id="noteval" rows="3"
+                                        placeholder="Заметки"></textarea>
+                                </div>
+                                <div class="form_control d-flex align-items-center">
+                                    <button class="note_save_btn">Сохранить</button>
+                                    <button class="note_cancel_btn">Отмена</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="actions_menu_wrapper position-absolute">
+                    <div class="actions_menu">
+                        <div class="menu_item actions_menu_btn d-flex align-items-center">
+                            <img src="./assets/images/icons/pen-clip.svg" alt="pen-clip">
+                            <span>Редактировать</span>
+                        </div>
+                        <div class="menu_item d-flex align-items-center">
+                            <img src="./assets/images/icons/clone.svg" alt="clone.svg">
+                            <span>Копировать</span>
+                        </div>
+                        <div class="menu_item d-flex align-items-center">
+                            <img src="./assets/images/icons/trash.svg" alt="trash.svg">
+                            <span>Delete Note</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- management end -->
+        </div>
+    </main>
+
+    <!-- modals start -->
+
+    <!-- email edit start-->
+    <div class="modal_wrapper email_edit_modal position-absolute w-100 h-100 d-flex align-items-start justify-content-center"
+        data-filter="email-modal">
+        <div class="modal_in">
+            <div class="modal_head d-flex justify-content-between">
+                <span>Редактирование эл.почты</span>
+                <button class="close_modal">
+                    <img src="./assets/images/icons/menu-burger-close.svg" alt="menu-burger-close">
+                </button>
+            </div>
+            <form action="#" onsubmit="return false">
+                <div class="form_control">
+                    <label for="emailedit">Email</label>
+                    <input type="email" id="emailedit" class="w-100" value="terechov1988@gmail.com" required>
+                </div>
+                <div class="form_buttons d-flex justify-content-end">
+                    <button class="cencel_btn close_modal">Отмена</button>
+                    <button class="save_btn close_modal">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- email edit end-->
+
+    <!-- send image start -->
+    <div class="modal_wrapper send_file_modal position-absolute w-100 h-100 d-flex align-items-start justify-content-center"
+        data-filter="send-file">
+        <div class="modal_in">
+            <div class="modal_head d-flex justify-content-between">
+                <span>Отправить изображение</span>
+                <button class="close_modal">
+                    <img src="./assets/images/icons/menu-burger-close.svg" alt="menu-burger-close">
+                </button>
+            </div>
+            <div class="send_image">
+                <div class="send_image_in d-grid">
+                    <div class="send_img_nosvg d-none">
+                        <img class="send_img" width="100%" src="./assets/images/sendimg.png" alt="sendimg"
+                            data-filter="send-img">
+                        <div class="actions">
+                            <button class="rotate_btn" data-filter="send-img">
+                                <img src="./assets/images/icons/convert-shapes.svg" alt="convert-shapes">
+                            </button>
+                            <button class="detete_btn">
+                                <img src="./assets/images/icons/trash.svg" alt="trash.svg">
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="send_img_svg d-flex d-none align-items-start justify-content-between">
+                    <div class="file_about d-flex align-items-center">
+                        <div class="send_img_wrapper d-flex align-items-center justify-content-center">
+                            <img class="send_img" src="./assets/images/icons/sendimg.svg" alt="send-img"
+                                data-filter="send-img-svg">
+                        </div>
+                        <div class="file_about_in">
+                            <div class="file_name">
+                                file(1).svg
+                            </div>
+                            <div class="file_size">
+                                2.6 KB
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions d-flex align-items-center">
+                        <button class="rotate_btn" data-filter="send-img-svg">
+                            <img src="./assets/images/icons/convert-shapes.svg" alt="convert-shapes">
+                        </button>
+                        <button class="detete_btn">
+                            <img src="./assets/images/icons/trash.svg" alt="trash.svg">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <form action="#" onsubmit="return false">
+                <div class="form_control">
+                    <label for="signature">Подпись</label>
+                    <input type="text" id="signature" class="w-100">
+                </div>
+                <div class="form_buttons d-flex justify-content-between">
+                    <button class="add_file_btn">Добавить</button>
+                    <button class="cencel_btn close_modal">Отмена</button>
+                    <button class="save_btn close_modal">Сохранить</button>
+                </div>
+                <div class="add_file d-none">
+                    <input type="file" id="addfile">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- send image end -->
+
+    <!-- accaunt settings start -->
+    <div class="modal_wrapper settings_modal position-absolute w-100 h-100 d-flex align-items-start justify-content-center"
+        data-filter="settings-modal">
+        <div class="modal_in">
+            <div class="modal_head d-flex justify-content-between">
+                <span>Настройки</span>
+                <button class="close_modal">
+                    <img src="./assets/images/icons/menu-burger-close.svg" alt="menu-burger-close">
+                </button>
+            </div>
+            <div class="user_data d-flex flex-column align-items-center">
+                <div class="avatar">
+                    <img src="./assets/images/avatar.png" alt="avatar">
+                </div>
+                <div class="user_name">Сергей Терехов</div>
+            </div>
+            <div class="email_and_password">
+                <div class="form_control d-flex align-items-center">
+                    <img src="./assets/images/icons/envelope.svg" alt="envelope">
+                    <input type="email" id="useremail" placeholder="E-mail">
+                </div>
+                <div class="form_control d-flex align-items-center">
+                    <img src="./assets/images/icons/lock.svg" alt="lock">
+                    <input type="password" id="userpassword" placeholder="Пароль">
+                </div>
+            </div>
+            <div class="settings_item">
+                <div class="settings_item_header">Permission</div>
+                <div class="form_switch_group">
+                    <label for="id1" class="d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="id1" checked>
+                        </div>
+                        <span>Super admin</span>
+                    </label>
+                </div>
+            </div>
+            <div class="settings_item">
+                <div class="settings_item_header">Notification Type</div>
+                <div class="form_switch_group">
+                    <label for="id2" class="d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="id2">
+                        </div>
+                        <span>Notify admin</span>
+                    </label>
+                    <label for="id3" class="d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="id3" checked>
+                        </div>
+                        <span>New messege to human</span>
+                    </label>
+                </div>
+            </div>
+            <div class="settings_item">
+                <div class="settings_item_header">Notification Channals</div>
+                <div class="form_switch_group">
+                    <label for="id4" class="d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="id4">
+                        </div>
+                        <span>Notify admin</span>
+                    </label>
+                    <label for="id5" class="d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="id5" checked>
+                        </div>
+                        <span>New messege to human</span>
+                    </label>
+                    <label for="id6" class="d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="id6" checked>
+                        </div>
+                        <span>Notify admin</span>
+                    </label>
+                    <label for="id7" class="d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="id7" checked>
+                        </div>
+                        <span>New messege to human</span>
+                    </label>
+                </div>
+            </div>
+            <button class="save_changes_btn">
+                Сохранить изменения
+            </button>
+        </div>
+    </div>
+    <!-- account settings end -->
+    <!-- accaunt settings start -->
+    <div class="modal_wrapper admin_panel_modal position-absolute w-100 h-100 d-flex align-items-start justify-content-center"
+        data-filter="admin-panel-modal">
+        <div class="modal_in">
+            <div class="modal_head d-flex justify-content-between">
+                <span>Admins</span>
+                <button class="close_modal">
+                    <img src="./assets/images/icons/menu-burger-close.svg" alt="menu-burger-close">
+                </button>
+            </div>
+            <div class="admin_panel_table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="head_title">Name</th>
+                            <th scope="col" class="text-center head_title">Contacts</th>
+                            <th scope="col" class="text-center head_title">Analytics</th>
+                            <th scope="col" class="text-center head_title">Flows</th>
+                            <th scope="col" class="text-center head_title">Settings</th>
+                            <th scope="col" class="head_title">Notifications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="align-items-center">
+                            <td scope="row" class="table_user_data d-flex align-items-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Name
+                                </div>
+                                <div class="avatar">
+                                    <img src="./assets/images/avatar6.png" alt="avatar5">
+                                </div>
+                                <span class="name">
+                                    Сергей Терехов
+                                </span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Contacts
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Analytics
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Flows
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Settings
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle">
+                                <div class="head_title d-sm-none d-block">
+                                    Notifications
+                                </div>
+                                <div class="notifications d-flex align-items-center justify-content-between">
+                                    <div class="Notifications_messenger">
+                                        <a href="#">
+                                            <img src="./assets/images/icons/telegram.svg" alt="telegram">
+                                        </a>
+                                        <a href="#">
+                                            <img src="./assets/images/icons/face_message.svg" alt="face_message">
+                                        </a>
+                                        <a href="#">
+                                            <img src="./assets/images/icons/envelope.svg" alt="envelope">
+                                        </a>
+                                    </div>
+                                    <div class="action position-relative">
+                                        <button class="action_btn">
+                                            <img src="./assets/images/icons/union.svg" alt="union">
+                                        </button>
+                                        <div class="actions_menu position-absolute">
+                                            <div class="menu_item actions_menu_btn d-flex align-items-center">
+                                                <img src="./assets/images/icons/pen-clip.svg" alt="pen-clip">
+                                                <span>Редактировать</span>
+                                            </div>
+                                            <div class="menu_item d-flex align-items-center">
+                                                <img src="./assets/images/icons/trash.svg" alt="trash.svg">
+                                                <span>Delete Note</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="align-items-center">
+                            <td scope="row" class="table_user_data d-flex align-items-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Name
+                                </div>
+                                <div class="avatar">
+                                    <img src="./assets/images/avatar6.png" alt="avatar5">
+                                </div>
+                                <span class="name">
+                                    Сергей Терехов
+                                </span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Contacts
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Analytics
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Flows
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Settings
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle">
+                                <div class="head_title d-sm-none d-block">
+                                    Notifications
+                                </div>
+                                <div class="notifications d-flex align-items-center justify-content-between">
+                                    <div class="Notifications_messenger">
+                                        <a href="#">
+                                            <img src="./assets/images/icons/telegram.svg" alt="telegram">
+                                        </a>
+                                        <a href="#">
+                                            <img src="./assets/images/icons/face_message.svg" alt="face_message">
+                                        </a>
+                                        <a href="#">
+                                            <img src="./assets/images/icons/envelope.svg" alt="envelope">
+                                        </a>
+                                    </div>
+                                    <div class="action position-relative">
+                                        <button class="action_btn">
+                                            <img src="./assets/images/icons/union.svg" alt="union">
+                                        </button>
+                                        <div class="actions_menu position-absolute">
+                                            <div class="menu_item actions_menu_btn d-flex align-items-center">
+                                                <img src="./assets/images/icons/pen-clip.svg" alt="pen-clip">
+                                                <span>Редактировать</span>
+                                            </div>
+                                            <div class="menu_item d-flex align-items-center">
+                                                <img src="./assets/images/icons/trash.svg" alt="trash.svg">
+                                                <span>Delete Note</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="align-items-center">
+                            <td scope="row" class="table_user_data d-flex align-items-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Name
+                                </div>
+                                <div class="avatar">
+                                    <img src="./assets/images/avatar6.png" alt="avatar5">
+                                </div>
+                                <span class="name">
+                                    Сергей Терехов
+                                </span>
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Contacts
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Analytics
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Flows
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle text-center">
+                                <div class="head_title d-sm-none d-block">
+                                    Settings
+                                </div>
+                                <img src="./assets/images/icons/possible.svg" alt="possible">
+                            </td>
+                            <td class="align-middle">
+                                <div class="head_title d-sm-none d-block">
+                                    Notifications
+                                </div>
+                                <div class="notifications d-flex align-items-center justify-content-between">
+                                    <div class="Notifications_messenger">
+                                        <a href="#">
+                                            <img src="./assets/images/icons/telegram.svg" alt="telegram">
+                                        </a>
+                                        <a href="#">
+                                            <img src="./assets/images/icons/face_message.svg" alt="face_message">
+                                        </a>
+                                        <a href="#">
+                                            <img src="./assets/images/icons/envelope.svg" alt="envelope">
+                                        </a>
+                                    </div>
+                                    <div class="action position-relative">
+                                        <button class="action_btn">
+                                            <img src="./assets/images/icons/union.svg" alt="union">
+                                        </button>
+                                        <div class="actions_menu position-absolute">
+                                            <div class="menu_item actions_menu_btn d-flex align-items-center">
+                                                <img src="./assets/images/icons/pen-clip.svg" alt="pen-clip">
+                                                <span>Редактировать</span>
+                                            </div>
+                                            <div class="menu_item d-flex align-items-center">
+                                                <img src="./assets/images/icons/trash.svg" alt="trash.svg">
+                                                <span>Delete Note</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="add_admin">
+                <button class="add_admin_btn">
+                    <span>Add</span>
+                    <img height="20" src="./assets/images/icons/add.svg" alt="add">
+                </button>
+                <div class="add_new_admin d-none">
+                    <div class="head">Add new admin</div>
+                    <form action="#" class="d-grid" onclick="return false">
+                        <div class="form_control d-flex align-items-center">
+                            <img src="./assets/images/icons/user.svg" alt="user">
+                            <input type="text" placeholder="Имя">
+                        </div>
+                        <div class="form_control d-flex align-items-center">
+                            <img src="./assets/images/icons/envelope.svg" alt="envelope">
+                            <input type="email" placeholder="E-mail">
+                        </div>
+                        <div class="form_control d-flex align-items-center">
+                            <img src="./assets/images/icons/lock.svg" alt="lock">
+                            <input type="password" placeholder="Пароль">
+                        </div>
+                        <button class="admin_save_btn">Сохранить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- account settings end -->
+
+    <!-- modals end -->
+
+    <!-- js -->
+    <script src="./assets/libs/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
